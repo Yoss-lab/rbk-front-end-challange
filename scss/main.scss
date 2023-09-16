@@ -1,0 +1,176 @@
+@import "mixin/mixin.scss";
+@import "extends/extend.scss";
+@import "variables.scss";
+@import "admin.scss";
+@import "icon/fontawesome.scss";
+
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+i { 
+    font-family: 'FontAwesome', sans-serif; 
+} 
+/*   *, ::after, ::before  {
+    box-shadow: 0 0 0 2px red
+    inset;
+}  */ 
+ 
+body { 
+    font-family: $font-body !important;
+    overflow-x: hidden;
+    background-color: $bg-body !important;
+    color: $color-body !important;
+    font-size: $fontsize-body !important;
+    h1 , .h1{
+        font-size: 32px;
+        font-weight: 700;
+        @media (max-width:1199px) {
+            font-size: 30px;
+        }
+        @media (max-width:991px) {
+            font-size: 28px;
+        }
+        @media (max-width:767px) {
+            font-size: 26px;
+        }
+        @media (max-width:600px) {
+            font-size: 24px;
+        }
+        @media (max-width:400px) {
+            font-size: 20px;
+        }
+    }
+}
+.form-control,.form-select{
+    &::placeholder{
+        font-size: $fontsize-body !important;
+    }
+    font-size: $fontsize-body !important;
+}
+.btn{
+    font-size: $fontsize-body !important;
+}
+.section-text {
+    margin-bottom: 30px;
+}
+.social{
+    text-align: left; 
+}
+.new-link{
+    width:100%;
+    background-color: transparent !important;
+    border: 1px solid $general-color!important;
+    color: $general-color !important;
+}
+.save-link{
+    max-width:80px;
+    background-color: $general-color !important;
+    border-color:$general-color!important;
+}
+.item-social{
+    text-align: left;
+    background-color: $bg-body;
+    border-radius: 8px;
+    padding: 20px 10px;
+    margin: 20px auto;
+} 
+.fontawesome {
+    font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands", sans-serif;
+  
+}
+.linkId{
+    
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+
+    .linkBar{
+        height: 15px;
+        position: relative;
+        width: 15px;
+        margin-right:8px;
+       span{
+        position: relative;
+        display: block;
+        height: 2px;
+        border-radius: 15px;
+        background: #000;
+        margin: 3px auto;
+        &:last-child{
+            margin-bottom: 0;
+        }
+       }
+    }
+}
+.mobile-view , .form-view{
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px 10px;
+}
+
+.mobile-img{
+    background-image: url(../img/phone1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    max-width:400px;
+    min-height: 480px;
+    /* height: 100%;
+    width:100%; */
+    margin: 0 auto;
+    z-index: 1;
+    position: relative;
+    div#fcb {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: 50px;
+        width: 50px;
+    }
+    .btn{
+        &.btn-primary{
+            &.btn-fcb{
+                background-color: blue !important;
+                color: #fff !important;
+            }
+        }
+    }
+    /* .phone1{
+        position: relative;
+        &::before{
+            position: absolute;
+            content: "";
+            background-color: #fff;
+            border-radius:50%;
+            height: 50px;
+            width: 50px;
+            top: 0;
+            left: 0;
+            right:0;
+            margin:0 auto;
+            z-index: 99;
+        }
+    }
+    .phone2{
+        position: relative;
+        &::after{
+            position: absolute;
+            content: "";
+            background-color: #fff;
+            border-radius:30px;
+            height: 20px;
+            width: 100px;
+            top: 0;
+            left: 0;
+            right:0;
+            margin:25px auto 10px;
+            z-index: 99;
+        }
+    } */
+}
+img, svg{
+    height: 100%;
+    width:100%
+}
