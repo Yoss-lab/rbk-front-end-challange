@@ -1,16 +1,61 @@
+var mobile_view = $(".mobile-view");
+function createSocialLink() {
+  var profileContent = $('<div class="mobile-img">'+
+  '<div id="details">'+
+  '<div class="d-flex justify-content-center align-items-center">'+
+  
+  '<div id="name_mv" class="name_mv"></div>'+
+  '</div>'+
+  '<div id="email_mv" class="email_mv"></div>'+
+  '</div>'+
+  ' <div id="sociaux" >'+
+  '<a id="lienFcb1" class="btn btn-primary btn-fcb lienFcb1" style="display: none;" href="#"><i class="fab fa-facebook mr-3"></i>social1<i class="fal fa-arrow-right ml-3"></i></a>'+
+  '<a id="lienFcb2" class="btn btn-primary btn-fcb lienFcb2" style="display: none;" href="#"><i class="fab fa-facebook mr-3"></i>social2<i class="fal fa-arrow-right ml-3"></i></a>'+
+  '</div>'+
+  '</div>'
+);
+return profileContent ;
+}
+
+
+// Parcourez chaque élément et ajoutez le contenu généré
+/* mobile_view.each(function() {
+    var $this = $(this);
+    var profileContent = createSocialLink();
+    $this.append(profileContent);
+}); */
+
+// Créez une seule instance de profileContent avec les modifications souhaitées
+var profileContent = createSocialLink();
+
+// Parcourez chaque élément mobile_view et ajoutez la même instance de profileContent à chacun d'eux
+mobile_view.each(function() {
+    var $this = $(this);
+    $this.append(profileContent.clone()); // Utilisez clone() pour créer des copies indépendantes de profileContent
+});
+
 $(document).ready(function() {
   // Sélectionnez les éléments HTML pour Link #1
   const selectReseauSocial1 = $('#selectReseauSocial1');
   const lienReseauSocial1 = $('#lienReseauSocial1');
-  const boutonAdjacent1 = $('#lienFcb1');
+  const boutonAdjacent1 = $('.lienFcb1');
 
   // Sélectionnez les éléments HTML pour Link #2
   const selectReseauSocial2 = $('#selectReseauSocial2');
   const lienReseauSocial2 = $('#lienReseauSocial2');
-  const boutonAdjacent2 = $('#lienFcb2');
+  const boutonAdjacent2 = $('.lienFcb2');
+
+  const firstName = $('#firstName');
+  const lastName = $('#lastName');
+  const mail = $('#email');
 
   // Sélectionnez le bouton "Sauvegarder les Liens"
   const boutonSauvegarder = $('#save');
+  const boutonSauvegarder2 = $('#save2');
+  const first_name_mv = $('.firstName_mv');
+  const last_name_mv = $('.lastName_mv');
+  const name_mv = $('.name_mv');
+  const email_mv = $('.email_mv');
 
   const errorAlert = $('#errorAlert');
   const errorMessageElement = $('#errorMessage');
@@ -139,9 +184,31 @@ $(document).ready(function() {
     }
   });
 
+
+  boutonSauvegarder2.on('click', function() {
+    
+    const first_name = firstName.val();
+    /* first_name_mv.text(first_name + ' ') ;
+    first_name_mv.css('display', 'block'); */
+
+    const last_name = lastName.val();
+    /* last_name_mv.html(last_name) ;
+    last_name_mv.css('display', 'block'); */
+
+    
+    name_mv.text(first_name +' ' +last_name);
+    name_mv.css('display', 'block');
+
+    const email = mail.val();
+    email_mv.html(email) ;
+    email_mv.css('display', 'block');
+
+   
+  });
   // Masquez les boutons adjacents au chargement de la page
-  boutonAdjacent1.css('display', 'none');
-  boutonAdjacent2.css('display', 'none');
+  first_name_mv.css('display', 'none');
+  last_name_mv.css('display', 'none');
+  email_mv.css('display', 'none');
 
   // Fonction pour obtenir la classe d'icône en fonction du réseau social
   function getIconClass(reseauSocial) {
@@ -154,7 +221,8 @@ $(document).ready(function() {
         return 'fab fa-twitter mr-3'; // Classe d'icône Font Awesome pour Twitter
       case 'Instagram':
         return 'fab fa-instagram mr-3'; // Classe d'icône Font Awesome pour Instagram
-      // Ajoutez d'autres cas pour d'autres réseaux sociaux au besoin
+      case 'Github':
+        return 'fab fa-github mr-3'; // Classe d'icône Font Awesome pour Instagram
       default:
         return 'fas fa-link mr-3'; // Classe d'icône par défaut (par exemple, un lien)
     }
@@ -174,21 +242,95 @@ $(document).ready(function() {
 
 
 // Sélectionnez les boutons et les interfaces en utilisant jQuery
+const links = $('#links');
 const boutonLinks = $('#afficherLinks');
 const boutonProfileEdit = $('#afficherProfileEdit');
+const boutonProfile = $('#afficherProfile');
+const backEditor = $('#backEditor');
+const logoHeader = $('#logoHeader');
+const shareLink = $('#shareLink');
 const interfaceLinks = $('#interfaceLinks');
 const interfaceProfileEdit = $('#interfaceProfileEdit');
+const interfaceProfile = $('#interfaceProfile');
+const preview_link = $('#preview-link');
 
 // Cachez initialement l'une des interfaces (par exemple, interfaceProfileEdit)
 interfaceProfileEdit.hide();
+interfaceProfile.hide();
 
+links.show();
+boutonProfile.show();
+boutonProfileEdit.show();
+boutonLinks.show();
+logoHeader.show();
+shareLink.hide();
+backEditor.hide();
 // Ajoutez des gestionnaires d'événements pour les boutons en utilisant jQuery
 boutonLinks.on('click', function() {
+    boutonLinks.addClass('active');
+    boutonProfileEdit.removeClass('active');
     interfaceLinks.show();
     interfaceProfileEdit.hide();
+    interfaceProfile.hide();
+    logoHeader.show();
+    boutonProfile.show();
+    boutonProfileEdit.show();
+    boutonLinks.show();
+    shareLink.hide();
+    backEditor.hide();
 });
 
 boutonProfileEdit.on('click', function() {
+    boutonProfileEdit.addClass('active');
+    boutonLinks.removeClass('active');
     interfaceLinks.hide();
+    interfaceProfile.hide();
     interfaceProfileEdit.show();
+
+    logoHeader.show();
+    boutonProfile.show();
+    boutonProfileEdit.show();
+    boutonLinks.show();
+    shareLink.hide();
+    backEditor.hide();
 });
+
+boutonProfile.on('click', function() {
+    boutonProfileEdit.removeClass('active');
+    boutonLinks.removeClass('active');
+    interfaceLinks.hide();
+    interfaceProfile.show();
+    interfaceProfileEdit.hide();
+    links.hide();
+    boutonProfile.hide();
+    boutonProfileEdit.hide();
+    boutonLinks.hide();
+    shareLink.show();
+    backEditor.show();
+    logoHeader.hide();
+    preview_link.css("width", "100%");
+});
+
+backEditor.on('click', function() {
+  boutonProfileEdit.removeClass('active');
+  boutonLinks.addClass('active');
+  interfaceLinks.show();
+  interfaceProfile.hide();
+  interfaceProfileEdit.hide();
+
+  logoHeader.show();
+  links.show();
+  boutonProfile.show();
+  boutonProfileEdit.show();
+  boutonLinks.show();
+  shareLink.hide();
+  backEditor.hide();
+  preview_link.css("width", "auto");
+});
+
+var headerHeight = $("#header").height();
+interfaceProfile.css("padding-top", (headerHeight + 52) + "px");
+interfaceProfile.css("margin-top", - (headerHeight + 36) + "px");
+
+
+

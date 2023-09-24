@@ -35,16 +35,18 @@
     </head>
     <body id="index" >
    
-        <header class="d-flex">
-            <div class="logo">
+        <header id="header" class="d-flex">
+            <div id="logoHeader" class="logo">
                 <img src="img/logo.svg" >
             </div>
-            <nav class="links">
-                <a href="#" id="afficherLinks" class="btn links_header"><i class="fas fa-link mr-3"></i>Links</a>
-                <a href="#" id="afficherProfileEdit" class="btn"><i class="fas fa-user mr-3"></i>Profile Details</a>
+            <nav id="links" class="links">
+                <a href="#" id="afficherLinks" class="btn links_header active"><i class="fas fa-link mr-1"></i>Links</a>
+                <a href="#" id="afficherProfileEdit" class="btn links_header"><i class="fas fa-user mr-1"></i>Profile Details</a>
             </nav>
-            <div class="preview-link">
-                <a href="#" class="btn">Preview</a>
+            <div id="preview-link" class="preview-link d-flex justify-content-between">
+                <a href="#" id="afficherProfile" class="btn">Preview</a>
+                <a href="#" id="backEditor" class="btn">Back to editor</a>
+                <a href="#" id="shareLink" class="btn">Share link</a>
             </div>
         </header>
 
@@ -53,18 +55,8 @@
             <div id="interfaceLinks">
                 <section id="social" class="social">
                     <div class="container d-flex flex-lg-row flex-column justify-content-center align-items-flex-start m-auto">
-                        <div class="col-lg-6 mt-lg-0 mt-3 mb-lg-0 mb-3 mr-lg-3 mobile-view">
-                            <div class="mobile-img">
-                                <!-- <div class="phone1"></div>
-                                <div class="phone2"></div> -->
-                                <div id="sociaux" >
-                                    <a id="lienFcb1" class="btn btn-primary btn-fcb" style="display: none;" href="#"><i class="fab fa-facebook mr-3"></i>social1<i class="fal fa-arrow-right ml-3"></i></a>
-
-                                    <a id="lienFcb2" class="btn btn-primary btn-fcb" style="display: none;" href="#"><i class="fab fa-facebook mr-3"></i>social2<i class="fal fa-arrow-right ml-3"></i></a>
-
-
-                                </div>
-                            </div>
+                        <div id="mobile-view" class="col-lg-6 mt-lg-0 mt-3 mb-lg-0 mb-3 mr-lg-3 mobile-view">
+                           
                         
                         </div>
                         
@@ -76,7 +68,7 @@
                             </div>
                             <div class="items-view9">
                                 <form class="form_item">
-                                <div class="item-social">
+                                    <div class="item-social">
                                     
                                         <div class="row">
                                             <div class="col-6">
@@ -104,6 +96,8 @@
                                             <option  value="Github" class="fontawesome">&#xf09b Github</option>
                                             <option value="Linkedin" class="fontawesome">&#xf0e1 Linkedin</option>
                                             <option value="Facebook" class="fontawesome">&#xf39e Facebook</option>
+                                            <option value="Instagram" class="fontawesome">&#xf16d Instagram</option>
+                                            <option value="Twitter" class="fontawesome">&#xf099 Twitter</option>
                                             </select>
                                         </div>
 
@@ -115,10 +109,9 @@
                                             </div>
                                         </div>
                                         
-                                    </form>
-                                </div>
-                                <div class="item-social">
-                                    
+                                    </div>
+
+                                    <div class="item-social">
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="linkId">
@@ -145,9 +138,11 @@
                                             <option  value="Github" class="fontawesome">&#xf09b Github</option>
                                             <option value="Linkedin" class="fontawesome">&#xf0e1 Linkedin</option>
                                             <option value="Facebook" class="fontawesome">&#xf39e Facebook</option>
+                                            <option value="Instagram" class="fontawesome">&#xf16d Instagram</option>
+                                            <option value="Twitter" class="fontawesome">&#xf099 Twitter</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="col-12">
                                             <label for="basic-url" class="form-label mt-2">Link</label>
                                             <div class="input-group mb-3">
@@ -155,9 +150,10 @@
                                             <input type="text" class="form-control" id="lienReseauSocial2" aria-describedby="basic-addon3" placeholder="https://example.com/users/">
                                             </div>
                                         </div>
-                                        
+                                    </div>
+
                                     
-                                </div>
+                                </form>
                                 <div class="row">
                                     <div id="errorAlert" class="alert alert-secondary alert-dismissible fade show" role="alert" style="display: none;">
                                         <strong>Erreur:</strong> <span id="errorMessage"></span>
@@ -171,92 +167,75 @@
                                         <button class="btn btn-primary save-link" id="save" type="submit">Save</button>
                                     </div>
                                 </div>
-                                
-                            </form>
                             </div>
                         </div>
                         
-                    
-
-                    
                     </div>
                 </section>
             </div>
 
             <div id="interfaceProfileEdit">
-                <!-- Profile Details Section -->
-                    <section id="profile-details" class="profile-details">
-                        <div class="container d-flex flex-lg-row flex-column justify-content-center align-items-flex-start m-auto">
-                            <div class="col-lg-6 mt-lg-0 mt-3 mb-lg-0 mb-3 mr-lg-3 mobile-view">
-                                <div class="mobile-img">
-                                    <!-- <div class="phone1"></div>
-                                    <div class="phone2"></div> -->
-                                    <div id="sociaux" >
-                                        <a id="lienFcb1" class="btn btn-primary btn-fcb" style="display: none;" href="#"><i class="fab fa-facebook mr-3"></i>social1<i class="fal fa-arrow-right ml-3"></i></a>
-    
-                                        <a id="lienFcb2" class="btn btn-primary btn-fcb" style="display: none;" href="#"><i class="fab fa-facebook mr-3"></i>social2<i class="fal fa-arrow-right ml-3"></i></a>
-    
-    
-                                    </div>
-                                </div>
+                <section id="profile-details" class="profile-details">
+                    <div class="container d-flex flex-lg-row flex-column justify-content-center align-items-flex-start m-auto">
+                        <div id="mobile-view" class="col-lg-6 mt-lg-0 mt-3 mb-lg-0 mb-3 mr-lg-3 mobile-view">
                             
-                            </div>
-                            
+                        
+                        </div>
 
-                            <div class="col-lg-6 mt-lg-0 mt-3 mb-lg-0 mb-3 ml-lg-3 text-left form-view">
-                                <h1 >Profile details</h1>
-                                <div class="section-text">Add your details to create a personal touch to your profile </div>
-                                
-                                <div class="items-view9">
-                                    <form class="form_item">
-                                        <div class="profile-picture">
-                                            <h3>Profile Picture</h3>
-                                            <p>Change image:</p>
-                                            <input type="file" id="profilePicture" accept="image/*">
-                                            
+                        <div class="col-lg-6 mt-lg-0 mt-3 mb-lg-0 mb-3 ml-lg-3 text-left form-view">
+                            <h1 >Profile details</h1>
+                            <div class="section-text">Add your details to create a personal touch to your profile </div>
+                            
+                            <div class="items-view9">
+                                <form class="form_item">
+
+                                   <div class="item-form">
+                                        <div class="row align-items-center justify-content-around">
+                                            <label for="formFileLg" class="form-label col-md-3">Profile Picture</label>
+                                            <div class="profile-picture col-md-4">
+                                                <input class="form-control" id="profilePicture" type="file" accept="image/*">
+                                            </div>
+                                            <div class="col-md-5 cond-image">
+                                                Image must be bellow 1024*1024px.<br>
+                                                Use PNG, JPG or BMP format.
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="item-form">
+                                    <div class="row">
+                                        <div class="form-group row info-usr">
+                                            <label for="firstName">First Name</label>
+                                            <input type="text" class="form-control" id="firstName" placeholder="Enter your first name">
                                         </div>
                                         
-                                     
+                                        <div class="form-group row info-usr">
+                                            <label for="lastName">Last Name</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Enter your last name">
+                                        </div>
+                                        <div class="form-group row info-usr">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="text-right">
+                                        <button class="btn btn-primary save-link" id="save2" type="submit">Save</button>
+                                    </div>
                                 
-                                    
-                                <div class="profile-info">
-                                    
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group row">
-                                                <label for="firstName">First Name</label>
-                                                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group row">
-                                                <label for="lastName">Last Name</label>
-                                                <input type="text" class="form-control" id="lastName" placeholder="Enter your last name">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter your email address">
-                                    </div>
-                                   
-                                </div>
-                                      
-                                <div class="text-right">
-                                    <button class="btn btn-primary save-link" id="save" type="submit">Save</button>
-                                </div>
-                                   
-                                    
                                 </form>
-                                </div>
                             </div>
-
-                           
                         </div>
-                    </section>
 
+                    </div>
+                </section>
             </div>
 
+            <div id="interfaceProfile">
+                <div class="mobile-view">
+                    
+                
+                </div>
+            </div>
         </main>
 
 
