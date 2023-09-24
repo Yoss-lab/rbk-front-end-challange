@@ -2,13 +2,11 @@ var mobile_view = $(".mobile-view");
 function createSocialLink() {
   var profileContent = $('<div class="mobile-img">'+
   '<div id="details">'+
-  '<div class="d-flex justify-content-center align-items-center">'+
-  
+  '<div id="profilePicture_mv" class="profilePicture_mv"></div>'+
   '<div id="name_mv" class="name_mv"></div>'+
-  '</div>'+
   '<div id="email_mv" class="email_mv"></div>'+
   '</div>'+
-  ' <div id="sociaux" >'+
+  '<div id="sociaux" >'+
   '<a id="lienFcb1" class="btn btn-primary btn-fcb lienFcb1" style="display: none;" href="#"><i class="fab fa-facebook mr-3"></i>social1<i class="fal fa-arrow-right ml-3"></i></a>'+
   '<a id="lienFcb2" class="btn btn-primary btn-fcb lienFcb2" style="display: none;" href="#"><i class="fab fa-facebook mr-3"></i>social2<i class="fal fa-arrow-right ml-3"></i></a>'+
   '</div>'+
@@ -48,6 +46,7 @@ $(document).ready(function() {
   const firstName = $('#firstName');
   const lastName = $('#lastName');
   const mail = $('#email');
+  const profilePicture = $('#profilePicture');
 
   // Sélectionnez le bouton "Sauvegarder les Liens"
   const boutonSauvegarder = $('#save');
@@ -56,6 +55,7 @@ $(document).ready(function() {
   const last_name_mv = $('.lastName_mv');
   const name_mv = $('.name_mv');
   const email_mv = $('.email_mv');
+  const profilePicture_mv = $('.profilePicture_mv');
 
   const errorAlert = $('#errorAlert');
   const errorMessageElement = $('#errorMessage');
@@ -186,7 +186,14 @@ $(document).ready(function() {
 
 
   boutonSauvegarder2.on('click', function() {
+    var imageUrl = profilePicture.val();
+    console.log(imageUrl);
+    profilePicture_mv.attr("src", imageUrl);
     
+    /* const profile_Picture = profilePicture.val();
+    profilePicture_mv.html(profile_Picture) ;
+    profile_Picture_mv.css('display', 'block'); */
+
     const first_name = firstName.val();
     /* first_name_mv.text(first_name + ' ') ;
     first_name_mv.css('display', 'block'); */
@@ -195,7 +202,6 @@ $(document).ready(function() {
     /* last_name_mv.html(last_name) ;
     last_name_mv.css('display', 'block'); */
 
-    
     name_mv.text(first_name +' ' +last_name);
     name_mv.css('display', 'block');
 
