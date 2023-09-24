@@ -184,6 +184,7 @@ $(document).ready(function() {
     }
   });
 
+  console.log('new code');
 
   boutonSauvegarder2.on('click', function() {
     var imageUrl = profilePicture.val();
