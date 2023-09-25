@@ -7,8 +7,8 @@ function createSocialLink() {
   '<div id="email_mv" class="email_mv"></div>'+
   '</div>'+
   '<div id="sociaux" >'+
-  '<a id="lienFcb1" class="btn btn-primary btn-fcb lienFcb1" style="display: none;" href="#"><i class="fab fa-facebook mr-3"></i>social1<i class="fal fa-arrow-right ml-3"></i></a>'+
-  '<a id="lienFcb2" class="btn btn-primary btn-fcb lienFcb2" style="display: none;" href="#"><i class="fab fa-facebook mr-3"></i>social2<i class="fal fa-arrow-right ml-3"></i></a>'+
+  '<a id="lienFcb1" class="btn btn-primary btn-fcb lienFcb1"></a>'+
+  '<a id="lienFcb2" class="btn btn-primary btn-fcb lienFcb2"></a>'+
   '</div>'+
   '</div>'
 );
@@ -31,17 +31,19 @@ mobile_view.each(function() {
     var $this = $(this);
     $this.append(profileContent.clone()); // Utilisez clone() pour créer des copies indépendantes de profileContent
 });
+const boutonAdjacent1 = $('.lienFcb1');
+const boutonAdjacent2 = $('.lienFcb2');
 
 $(document).ready(function() {
   // Sélectionnez les éléments HTML pour Link #1
   const selectReseauSocial1 = $('#selectReseauSocial1');
   const lienReseauSocial1 = $('#lienReseauSocial1');
-  const boutonAdjacent1 = $('.lienFcb1');
+  //const boutonAdjacent1 = $('.lienFcb1');
 
   // Sélectionnez les éléments HTML pour Link #2
   const selectReseauSocial2 = $('#selectReseauSocial2');
   const lienReseauSocial2 = $('#lienReseauSocial2');
-  const boutonAdjacent2 = $('.lienFcb2');
+  //const boutonAdjacent2 = $('.lienFcb2');
 
   const firstName = $('#firstName');
   const lastName = $('#lastName');
@@ -145,7 +147,7 @@ $(document).ready(function() {
       const arrowIcon1 = '<i class="fal fa-arrow-right ml-3"></i>';
       boutonAdjacent1.html(`<i class="${iconClass1}"></i> ${reseauSocialSelectionne1} ${arrowIcon1}`);
       boutonAdjacent1.attr('href', lienSaisi1);
-      boutonAdjacent1.css('display', 'block');
+      boutonAdjacent1.addClass("hide-before");
 
       // Ajoutez la classe CSS appropriée au bouton en fonction du réseau social
       boutonAdjacent1.addClass(`${reseauSocialSelectionne1}-button`);
@@ -173,7 +175,7 @@ $(document).ready(function() {
       const arrowIcon2 = '<i class="fal fa-arrow-right ml-3"></i>';
       boutonAdjacent2.html(`<i class="${iconClass2}"></i> ${reseauSocialSelectionne2} ${arrowIcon2}`);
       boutonAdjacent2.attr('href', lienSaisi2);
-      boutonAdjacent2.css('display', 'block');
+      boutonAdjacent2.addClass("hide-before");
 
       // Ajoutez la classe CSS appropriée au bouton en fonction du réseau social
       boutonAdjacent2.addClass(`${reseauSocialSelectionne2}-button`);
@@ -183,40 +185,34 @@ $(document).ready(function() {
       lienReseauSocial2.val(''); */
     }
   });
+  boutonAdjacent1.removeClass("hide-before");
+  boutonAdjacent2.removeClass("hide-before");
 
-  console.log('new code');
+  console.log('new second code');
 
   boutonSauvegarder2.on('click', function() {
-    var imageUrl = profilePicture.val();
-    console.log(imageUrl);
-    profilePicture_mv.attr("src", imageUrl);
-    
-    /* const profile_Picture = profilePicture.val();
-    profilePicture_mv.html(profile_Picture) ;
-    profile_Picture_mv.css('display', 'block'); */
+
+    var selectedFile = profilePicture[0].files[0];
+    var imageUrl = URL.createObjectURL(selectedFile);
+
+    profilePicture_mv.empty(); 
+    profilePicture_mv.addClass("hide-before");
+    profilePicture_mv.append('<img src="' + imageUrl + '" alt="Profile Picture">');
 
     const first_name = firstName.val();
-    /* first_name_mv.text(first_name + ' ') ;
-    first_name_mv.css('display', 'block'); */
-
     const last_name = lastName.val();
-    /* last_name_mv.html(last_name) ;
-    last_name_mv.css('display', 'block'); */
 
     name_mv.text(first_name +' ' +last_name);
-    name_mv.css('display', 'block');
+    name_mv.addClass("hide-before");
 
     const email = mail.val();
     email_mv.html(email) ;
-    email_mv.css('display', 'block');
+    email_mv.addClass("hide-before");
 
-   
   });
-  // Masquez les boutons adjacents au chargement de la page
-  first_name_mv.css('display', 'none');
-  last_name_mv.css('display', 'none');
-  email_mv.css('display', 'none');
-
+  name_mv.removeClass("hide-before");
+  email_mv.removeClass("hide-before");
+  profilePicture_mv.removeClass("hide-before");
   // Fonction pour obtenir la classe d'icône en fonction du réseau social
   function getIconClass(reseauSocial) {
     switch (reseauSocial) {

@@ -124,7 +124,7 @@ body {
 }
 
 .mobile-img{
-    background-image: url(../img/phone1.jpg);
+    background-image: url(../img/phone2.jpg);
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: center;
@@ -295,27 +295,105 @@ header{
 #sociaux {
     position: absolute;
     top: auto;
-    bottom: 34px;
+    bottom: 36px;
     left: 0;
     right: 0;
     margin: auto;
-    height: fit-content;
+    min-height: 70px;
     width: 153px;
+    a{
+        margin-bottom: 10px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+    #lienFcb1, #lienFcb2{
+        position: relative;
+        display: block;
+        background: #eee;
+        border-color: #eee;
+        min-height: 30px;
+        &::after{
+            position: absolute;
+            content: "";
+            background-color: #000;
+            top: 7px;
+            left: 0;
+            right: 0;
+            height: 10px;
+            width: 100px;
+            border-radius: 30px;
+            margin: auto;
+            display: none;
+        }
+    }
+    
 }
 #details {
     position: absolute;
-    top: 113px;
+    top: 32px;
     bottom: auto;
     left: 0;
     right: 0;
     margin: auto;
-    height: fit-content;
+    min-height: 200px;
     width: 153px;
     text-align: center;
     font-size: 12px;
     overflow: hidden;
-   // white-space: normal; /* ou white-space: break-spaces; */
     word-wrap: break-word;
+    .profilePicture_mv{
+        position: relative;
+        max-width: 60px;
+        height: 60px;
+        width: 100%;
+        margin: 10px auto;
+        &::before{
+            position: absolute;
+            content: "";
+            background-color: #eee;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+        }
+        img{
+            border-radius:50%;
+        }
+    }
+    .name_mv{
+        position: relative;
+        &::after{
+            position: absolute;
+            content: "";
+            background-color: #eee;
+            top: 7px;
+            left: 0;
+            right: 0;
+            height: 10px;
+            width: 100px;
+            border-radius: 30px;
+            margin: auto;
+        }
+    }
+
+    .email_mv{
+        position: relative;
+        &::after{
+            position: absolute;
+            content: "";
+            background-color: #eee;
+            top: 24px;
+            left: 0;
+            right: 0;
+            height: 10px;
+            width: 45px;
+            border-radius: 30px;
+            margin: auto;
+        }
+    }
     
 }
 .Linkedin-button{
@@ -339,3 +417,10 @@ header{
     background-color: $twitter-color !important;
     border-color: $twitter-color !important;
 }
+
+.hide-before {
+    &::after,&::before{
+        display: none;
+    }
+    
+  }
