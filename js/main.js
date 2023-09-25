@@ -15,6 +15,28 @@ function createSocialLink() {
 return profileContent ;
 }
 
+// Gestionnaire d'événements pour le changement de l'input de sélection de fichier
+var profilePicture = $('#profilePicture');
+var profileImage = $("#profileImage");
+var  profile_picture= $(".profile-picture");
+
+profilePicture.on("change", function() {
+  var selectedFile = this.files[0];
+
+  if (selectedFile) {
+      // Lorsqu'un fichier est sélectionné, obtenez son URL en utilisant createObjectURL
+      var imageUrl = URL.createObjectURL(selectedFile);
+      
+      // Mettez à jour l'attribut src de l'élément img pour afficher l'image
+      profileImage.attr("src", imageUrl);
+      profile_picture.addClass("hide-before");
+  }/*  else {
+      // Effacez l'image si aucun fichier n'est sélectionné
+      profileImage.attr("src", "");
+  } */
+});
+
+profile_picture.removeClass("hide-before");
 
 // Parcourez chaque élément et ajoutez le contenu généré
 /* mobile_view.each(function() {
@@ -48,7 +70,7 @@ $(document).ready(function() {
   const firstName = $('#firstName');
   const lastName = $('#lastName');
   const mail = $('#email');
-  const profilePicture = $('#profilePicture');
+  
 
   // Sélectionnez le bouton "Sauvegarder les Liens"
   const boutonSauvegarder = $('#save');

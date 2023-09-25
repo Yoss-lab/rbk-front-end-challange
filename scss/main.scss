@@ -424,3 +424,14 @@ header{
     }
     
   }
+
+.reset-img-style{
+    border: none !important;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    border-radius: 3px;
+}
+#profilePicture{
+    z-index:9;
+}
